@@ -1,0 +1,14 @@
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\QueryResultPrinter.exe.config
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\QueryResultPrinter.exe
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\QueryResultPrinter.pdb
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\System.Data.SqlClient.dll
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\System.Data.SqlClient.xml
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.csprojAssemblyReference.cache
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.QueryResultPrinter.resources
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.Properties.Resources.resources
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.csproj.GenerateResource.cache
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.csproj.CoreCompileInputs.cache
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.csproj.CopyComplete
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.exe
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.pdb
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\QueryResultPrinter.MainForm.resources
