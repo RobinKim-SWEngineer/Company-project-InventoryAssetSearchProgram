@@ -226,6 +226,7 @@ namespace TotalInventory
         private void CopyDetailGridToClipBoard()
         {
             gridDetailData.SelectAll();
+
             DataObject dataObject = gridDetailData.GetClipboardContent();
             if (dataObject != null)
             {

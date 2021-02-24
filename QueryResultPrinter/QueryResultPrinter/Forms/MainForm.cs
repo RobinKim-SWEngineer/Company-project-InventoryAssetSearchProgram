@@ -42,7 +42,6 @@ namespace TotalInventory
 
         private void ClearTabPageWithContent(Form form)
         {
-            form = null;
             tabControl.TabPages.Remove(tabControl.SelectedTab);
 
             if (tabControl.TabPages.Count == 0)
@@ -84,6 +83,7 @@ namespace TotalInventory
 
         private void TotalInventoryFormClosedEventHandler(object sender, FormClosedEventArgs e)
         {
+            totalInventoryStatus = null;
             ClearTabPageWithContent(totalInventoryStatus);
         }
 
@@ -105,6 +105,7 @@ namespace TotalInventory
         }
         private void ClosedInventoryStatusClosedEventHandler(object sender, FormClosedEventArgs e)
         {
+            closedInventoryStatusForm = null;
             ClearTabPageWithContent(closedInventoryStatusForm);
         }
 
@@ -127,6 +128,7 @@ namespace TotalInventory
 
         private void ProductInOutDetailClosedEventHandler(object sender, FormClosedEventArgs e)
         {
+            productInOutDetail = null;
             ClearTabPageWithContent(productInOutDetail);
         }
 
@@ -149,6 +151,7 @@ namespace TotalInventory
 
         private void SemiFinishedInOutDetailFormClosedEventHandler(object sender, FormClosedEventArgs e)
         {
+            semiFinishedInOutDetailForm = null;
             ClearTabPageWithContent(semiFinishedInOutDetailForm);
         }
 

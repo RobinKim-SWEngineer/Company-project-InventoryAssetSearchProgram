@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QueryResultPrinter.Custom_DataGridView_Format
@@ -13,7 +14,16 @@ namespace QueryResultPrinter.Custom_DataGridView_Format
             AddHeadertRowIndex(dataGridView.Rows);
 
             ChangeColumnHeaderFormat(dataGridView);
+
+            SetRowHeaderSelectionColor(dataGridView.Rows, Color.Transparent);
         }
+
+        static Action<DataGridViewRowCollection, Color> SetRowHeaderSelectionColor = (dataGridViewRows, color) => 
+        { 
+            dataGridViewRows.Cast<DataGridViewRow>().ToList().ForEach(row => row.HeaderCell.Style.SelectionBackColor = color);
+            dataGridViewRows.Cast<DataGridViewRow>().ToList().ForEach(row => row.HeaderCell.Style.SelectionForeColor = Color.Black);
+        };
+
        static void ChangeNumberFormat(DataGridViewColumnCollection dataGridViewColumnCollection)
         {
             foreach (DataGridViewColumn column in dataGridViewColumnCollection)

@@ -29,6 +29,8 @@ namespace TotalInventory
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelSelectedTypes = new System.Windows.Forms.Label();
             this.labelTotalSummary = new System.Windows.Forms.Label();
             this.labelTotalDetail = new System.Windows.Forms.Label();
@@ -78,6 +80,14 @@ namespace TotalInventory
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDetailData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gridDetailData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDetailData.DefaultCellStyle = dataGridViewCellStyle1;
             this.gridDetailData.Location = new System.Drawing.Point(6, 294);
             this.gridDetailData.Name = "gridDetailData";
             this.gridDetailData.RowHeadersWidth = 51;
@@ -111,6 +121,14 @@ namespace TotalInventory
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridSummaryData.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gridSummaryData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridSummaryData.DefaultCellStyle = dataGridViewCellStyle2;
             this.gridSummaryData.GridColor = System.Drawing.SystemColors.AppWorkspace;
             this.gridSummaryData.Location = new System.Drawing.Point(6, 72);
             this.gridSummaryData.Name = "gridSummaryData";
