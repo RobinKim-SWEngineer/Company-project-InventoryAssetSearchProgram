@@ -71,7 +71,7 @@ namespace TotalInventory
             this.totalInventoryStatusToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(1, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(402, 36);
+            this.menuStrip.Size = new System.Drawing.Size(252, 36);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -140,7 +140,7 @@ namespace TotalInventory
             this.excelToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(1, 9);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(216, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(366, 48);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -174,6 +174,7 @@ namespace TotalInventory
             this.excelToolStripMenuItem.Size = new System.Drawing.Size(58, 44);
             this.excelToolStripMenuItem.Text = "Excel";
             this.excelToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.excelToolStripMenuItem.Click += new System.EventHandler(this.excelToolStripMenuItem_Click);
             // 
             // tabControl
             // 

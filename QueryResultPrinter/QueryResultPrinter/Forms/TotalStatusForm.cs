@@ -1,4 +1,5 @@
-﻿using QueryResultPrinter;
+﻿using PCZInventory.Interface;
+using QueryResultPrinter;
 using QueryResultPrinter.Custom_DataGridView_Format;
 using QueryResultPrinter.Mappers;
 using QueryResultPrinter.Workers;
@@ -12,13 +13,13 @@ using System.Windows.Forms;
 
 namespace TotalInventory
 {
-    public partial class TotalInventoryStatus : Form, ISearchable
+    public partial class TotalInventoryStatus : Form, ISearchable, IExportable
     {
         public TotalInventoryStatus()
         {
             InitializeComponent();
         }
-        public virtual void TotalInventoryStatus_Load(object sender, EventArgs e)
+        public void TotalInventoryStatus_Load(object sender, EventArgs e)
         {
             labelDatePicker.Text = "Reference Month";
 
@@ -39,7 +40,7 @@ namespace TotalInventory
             // To make Rowheader include upto 4 digits ( Temporary resolution )
             gridDetailData.RowHeadersDefaultCellStyle.Padding = new Padding(4);
         }
-        public virtual void SummaryDataSearch()
+        public void SummaryDataSearch()
         {
             ClearGridViewData(gridDetailData);
 
@@ -69,8 +70,6 @@ namespace TotalInventory
 
         private Action<DataGridView> ClearGridViewData = dataGridView => dataGridView.Columns.Clear();
         private Func<DataGridView, bool> AnySelection = (dataGridView) => dataGridView.SelectedRows.Count > 0;
-        private Func<DataGridView, bool> NotSinglyLastRow = (dataGridView) => dataGridView.SelectedRows[0] != dataGridView.Rows[dataGridView.RowCount -1];
-
 
         private void ShowUpTypeSelectionLabel()
         {
@@ -80,7 +79,7 @@ namespace TotalInventory
         #nullable enable
         private void SetSelectionLabelText(List<string>? selection)
         {
-            if (selection == null)
+            if (selection is null)
             {
                 labelSelectedTypes.Text = "Selection : None";
                 return;
@@ -190,10 +189,69 @@ namespace TotalInventory
             }
         }
         #nullable disable
-
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             IsDetailDataShowUpAllowed = false;
+        }
+
+        public void Export()
+        {
+            CopyDetailGridToClipBoard();
+
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+            string filePath = SetFilePath();
+
+            if (filePath != "")
+            {
+                xlWorkBook.SaveAs(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            else
+            {
+                MessageBox.Show("Please choose file path to export the content");
+            }
+        }
+
+        private void CopyDetailGridToClipBoard()
+        {
+            gridDetailData.SelectAll();
+            DataObject dataObject = gridDetailData.GetClipboardContent();
+            if (dataObject != null)
+            {
+                Clipboard.SetDataObject(dataObject);
+            }
+        }
+
+        private string SetFilePath()
+        {
+            string filePath = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog()
+            {
+                InitialDirectory = @"C:\",
+                Title = "Saving file path selection",
+                DefaultExt = "xlsx",
+                Filter = "Excel Document|*.xlsx;*.xls;*.csv",
+                CheckPathExists = true,
+                RestoreDirectory = true
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                filePath = saveFileDialog.FileName;
+            }
+
+            return filePath;
         }
     }
 }

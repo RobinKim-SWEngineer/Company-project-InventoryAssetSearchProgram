@@ -14,3 +14,4 @@ C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter
 C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\PCZInventory.Properties.Resources.resources
 C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\PCZ Inventory.exe
 C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\PCZ Inventory.pdb
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\TotalInventoryStatus.csproj.ResolveComReference.cache
