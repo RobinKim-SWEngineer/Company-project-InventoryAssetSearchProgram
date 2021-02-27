@@ -117,7 +117,7 @@ namespace TotalInventory
                 productInOutDetail = new ProductInOutDetail();
 
                 AddToTabControl(productInOutDetail);
-
+                
                 productInOutDetail.FormClosed += new FormClosedEventHandler(ProductInOutDetailClosedEventHandler);
             }
             else

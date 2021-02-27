@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace TotalInventory
@@ -31,7 +30,7 @@ namespace TotalInventory
             gridSummaryData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
 
             DataGridViewFormat.LimitUserInteractionWithDataGridView(gridDetailData);
-            gridDetailData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            gridDetailData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             labelSelectedTypes.Visible = false;
             labelSelectedTypes.Location = new Point(labelTotalDetail.Right + 5, labelTotalDetail.Top);
@@ -168,7 +167,6 @@ namespace TotalInventory
                         {
                             Worker.AddSecondArguments(this.Name, sqlCommand, userSelection[i]);
                         }
-
                         try
                         {
                             sqlConnection.Open();
@@ -184,7 +182,6 @@ namespace TotalInventory
                         }
                     }
                 }
-
                 dataGridView.DataSource = dataTable;
             }
         }
@@ -196,25 +193,30 @@ namespace TotalInventory
 
         public void Export()
         {
-            CopyDetailGridToClipBoard();
-
-            Microsoft.Office.Interop.Excel.Application xlexcel;
-            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-
-            xlexcel = new Microsoft.Office.Interop.Excel.Application();
-            xlexcel.Visible = true;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
-            CR.Select();
-            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-
             string filePath = SetFilePath();
 
             if (filePath != "")
             {
+                CopyDetailGridToClipBoard();
+
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlexcel = new Microsoft.Office.Interop.Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+                xlWorkSheet.Columns.AutoFit();
+                xlWorkSheet.UsedRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                xlWorkSheet.UsedRange.Borders.Weight = Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin;
+
+                CR.Select();
                 xlWorkBook.SaveAs(filePath, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             }
             else
@@ -251,7 +253,6 @@ namespace TotalInventory
             {
                 filePath = saveFileDialog.FileName;
             }
-
             return filePath;
         }
     }

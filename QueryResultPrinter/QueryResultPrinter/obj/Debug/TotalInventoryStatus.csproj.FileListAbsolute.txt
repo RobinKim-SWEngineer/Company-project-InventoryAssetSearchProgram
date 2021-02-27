@@ -15,3 +15,6 @@ C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter
 C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\PCZ Inventory.exe
 C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\PCZ Inventory.pdb
 C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\obj\Debug\TotalInventoryStatus.csproj.ResolveComReference.cache
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\ExcelNumberFormat.dll
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\System.IO.Packaging.dll
+C:\HG Kim\SoftwareDevelopment\WindowsFomrs\QueryResultPrinter\QueryResultPrinter\QueryResultPrinter\bin\Debug\ExcelNumberFormat.xml
