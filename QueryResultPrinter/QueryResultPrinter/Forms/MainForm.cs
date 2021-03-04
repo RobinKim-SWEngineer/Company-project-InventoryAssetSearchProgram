@@ -2,6 +2,7 @@
 using QueryResultPrinter;
 using QueryResultPrinter.Forms;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -42,6 +43,7 @@ namespace TotalInventory
 
         private void ClearTabPageWithContent(Form form)
         {
+            EnableGridSelectionCangedEvent(false);
             tabControl.TabPages.Remove(tabControl.SelectedTab);
 
             if (tabControl.TabPages.Count == 0)
@@ -49,8 +51,31 @@ namespace TotalInventory
                 tabControl.SendToBack();
                 return;
             }
-
             SetLastTabPageAsSelectedTap();
+        }
+
+        private void EnableGridSelectionCangedEvent(Boolean selection)
+        {   
+            if (tabControl.SelectedTab.Controls.Count == 0)
+            {
+                return;
+            }
+
+            ISelectionChangeNoticeControllable selectionChangeNoticeControllable = tabControl.SelectedTab.Controls[0] as ISelectionChangeNoticeControllable;
+
+            if (selectionChangeNoticeControllable != null)
+            {
+                switch (selection)
+                {
+                    case true:
+                        selectionChangeNoticeControllable.EnableSelectionChangeNotice();
+                        break;
+
+                    case false:
+                        selectionChangeNoticeControllable.DisableSelectionChangeNotice();
+                        break;
+                }
+            }
         }
 
         private void SetAsSelectedTab(Form form)

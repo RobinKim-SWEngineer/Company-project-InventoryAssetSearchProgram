@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TotalInventory
 {
-    public partial class TotalInventoryStatus : Form, ISearchable, IExportable
+    public partial class TotalInventoryStatus : Form, ISearchable, IExportable, ISelectionChangeNoticeControllable
     {
         public TotalInventoryStatus()
         {
@@ -93,9 +93,7 @@ namespace TotalInventory
             if (AnySelection(gridSummaryData) && IsDetailDataShowUpAllowed)
             {
                 var referenceColumnName = Mapper.GetReferenceColumnName(this.Name);
-                
-                // This is for excluding Row 'Total' selection when a single row is chosen
-                // But it works even when multiple selection, due to this method's 3 times called strange built-in feature
+
                 ExcludeRowTotalSelection(referenceColumnName);
 
                 var userSelection = GetSelectionInGridViewSummary(referenceColumnName);
@@ -103,7 +101,7 @@ namespace TotalInventory
 
                 ShowQueryResultToGridView(gridDetailData, Mapper.GetGirdViewDetailCommand(this.Name), userSelection);
 
-                DataGridViewFormat.ChangeGridViewFormat(gridDetailData);
+                //DataGridViewFormat.ChangeGridViewFormat(gridDetailData);
 
                 DataGridViewFormat.UndoAutomaticRowSelection(gridDetailData);
             }
@@ -119,12 +117,22 @@ namespace TotalInventory
         private void ExcludeRowTotalSelection(string columnName)
         {
             DataGridViewRow singlySelectedRow = gridSummaryData.SelectedRows[0];
+
             if (singlySelectedRow.Cells[columnName].Value.ToString() == "")
             {
+                // DataGridView.SelectionChanged should not be called when deselecting row
+                DisableSelectionChangeNotice();
+
                 singlySelectedRow.Selected = false;
+
+                EnableSelectionChangeNotice();
+
                 return;
             }
         }
+
+        public void DisableSelectionChangeNotice() => gridSummaryData.SelectionChanged -= gridSummaryData_SelectionChanged;
+        public void EnableSelectionChangeNotice() => gridSummaryData.SelectionChanged += gridSummaryData_SelectionChanged;
 
         private List<string> GetSelectionInGridViewSummary(string columnName)
         {
