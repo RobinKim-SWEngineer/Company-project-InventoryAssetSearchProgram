@@ -101,7 +101,7 @@ namespace TotalInventory
 
                 ShowQueryResultToGridView(gridDetailData, Mapper.GetGirdViewDetailCommand(this.Name), userSelection);
 
-                //DataGridViewFormat.ChangeGridViewFormat(gridDetailData);
+                DataGridViewFormat.ChangeGridViewFormat(gridDetailData);
 
                 DataGridViewFormat.UndoAutomaticRowSelection(gridDetailData);
             }

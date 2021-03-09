@@ -63,7 +63,7 @@ namespace TotalInventory
 
             ISelectionChangeNoticeControllable selectionChangeNoticeControllable = tabControl.SelectedTab.Controls[0] as ISelectionChangeNoticeControllable;
 
-            if (selectionChangeNoticeControllable != null)
+            if (!IsNull(selectionChangeNoticeControllable))
             {
                 switch (selection)
                 {
